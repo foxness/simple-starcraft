@@ -17,6 +17,8 @@ public:
 
 	const sf::Vector2f& multiply(const sf::Vector2f& a, float b);
 
+	float Unit::abs(const sf::Vector2f& a);
+
 	void update(double dt);
 
 	const sf::Vector2f& getPosition();

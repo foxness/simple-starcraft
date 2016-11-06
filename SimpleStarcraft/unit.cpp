@@ -1,5 +1,6 @@
 #include <SFML\Graphics.hpp>
 #include "unit.h"
+#include <cmath>
 
 Unit::Unit(float x, float y)
 {
@@ -18,10 +19,25 @@ const sf::Vector2f& Unit::multiply(const sf::Vector2f& a, float b)
 	return sf::Vector2f(a.x * b, a.y * b);
 }
 
+float Unit::abs(const sf::Vector2f& a)
+{
+	return std::sqrt(a.x * a.x + a.y * a.y);
+}
+
 void Unit::update(double dt)
 {
 	if (moving)
-		position += multiply((destination - orig), dt);
+	{
+		if (abs(destination - position) < 1)
+		{
+			position = destination;
+			moving = false;
+		}
+		else
+		{
+			position += multiply((destination - orig), dt);
+		}
+	}
 }
 
 const sf::Vector2f& Unit::getPosition()
