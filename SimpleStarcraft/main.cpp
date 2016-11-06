@@ -15,7 +15,6 @@ int main()
 	circle.setFillColor(sf::Color::Green);
 
 	Unit a;
-	a.move(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 
 	sf::Clock clock;
 	float prevTime = clock.getElapsedTime().asSeconds();
@@ -28,14 +27,19 @@ int main()
 				window.close();
 		}
 
-		window.clear();
-
 		float time = clock.getElapsedTime().asSeconds();
 		float dt = time - prevTime;
 		prevTime = clock.getElapsedTime().asSeconds();
 
+		window.clear();
+
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+		{
+			auto mousePosition = sf::Mouse::getPosition(window);
+			a.move(mousePosition.x, mousePosition.y);
+		}
+
 		a.update(dt);
-		std::cout << dt << std::endl;
 
 		circle.setPosition(a.getPosition());
 		window.draw(circle);
