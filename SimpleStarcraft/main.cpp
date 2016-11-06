@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "constants.h"
+#include "unit.h"
 
 int main()
 {
@@ -12,6 +13,9 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
 	sf::CircleShape circle(10);
 	circle.setFillColor(sf::Color::Green);
+
+	Unit a;
+	a.move(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 
 	sf::Clock clock;
 	float prevTime = clock.getElapsedTime().asSeconds();
@@ -27,14 +31,14 @@ int main()
 		window.clear();
 
 		float time = clock.getElapsedTime().asSeconds();
-
-		circle.setPosition(time * 10, WINDOW_HEIGHT / 2 + std::sin(time) * 150);
-		window.draw(circle);
-
-		float elapsed = time - prevTime;
+		float dt = time - prevTime;
 		prevTime = clock.getElapsedTime().asSeconds();
-		float fps = 1 / elapsed;
-		std::cout << fps << std::endl;
+
+		a.update(dt);
+		std::cout << dt << std::endl;
+
+		circle.setPosition(a.getPosition());
+		window.draw(circle);
 
 		window.display();
 	}
