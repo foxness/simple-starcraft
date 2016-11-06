@@ -1,14 +1,20 @@
-#include <SFML/Graphics.hpp>
 #include <iostream>
+#include <cmath>
+
+#include <SFML/Graphics.hpp>
+#include "constants.h"
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(400, 400), "Simple Starcraft");
-	sf::CircleShape shape(200.f);
-	shape.setFillColor(sf::Color::Green);
+	sf::ContextSettings settings;
+	settings.antialiasingLevel = 8;
+
+	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
+	sf::CircleShape circle(10);
+	circle.setFillColor(sf::Color::Green);
 
 	sf::Clock clock;
-
+	float prevTime = clock.getElapsedTime().asSeconds();
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -19,9 +25,16 @@ int main()
 		}
 
 		window.clear();
-		window.draw(shape);
 
-		std::cout << clock.getElapsedTime().asSeconds() << std::endl;
+		float time = clock.getElapsedTime().asSeconds();
+
+		circle.setPosition(time * 10, WINDOW_HEIGHT / 2 + std::sin(time) * 150);
+		window.draw(circle);
+
+		float elapsed = time - prevTime;
+		prevTime = clock.getElapsedTime().asSeconds();
+		float fps = 1 / elapsed;
+		std::cout << fps << std::endl;
 
 		window.display();
 	}
