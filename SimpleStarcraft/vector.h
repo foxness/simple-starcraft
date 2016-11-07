@@ -37,6 +37,10 @@ public:
 
 	const Vector operator-() const;
 
+	bool operator==(const Vector& a) const;
+
+	bool operator!=(const Vector& a) const;
+
 	friend std::ostream& operator<<(std::ostream& a, const Vector& b);
 
 	const Vector normalized() const;

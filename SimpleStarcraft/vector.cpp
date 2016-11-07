@@ -80,6 +80,16 @@ const Vector Vector::operator-() const
 	return Vector(-x, -y);
 }
 
+bool Vector::operator==(const Vector& a) const
+{
+	return x == a.x && y == a.y;
+}
+
+bool Vector::operator!=(const Vector& a) const
+{
+	return !(*this == a);
+}
+
 const Vector Vector::normalized() const
 {
 	return Vector(getAngle(), 1, 0);
@@ -87,6 +97,5 @@ const Vector Vector::normalized() const
 
 std::ostream& operator<<(std::ostream& a, const Vector& b)
 {
-	a << "(" << b.getX() << ", " << b.getY() << ")";
-	return a;
+	return a << "(" << b.getX() << ", " << b.getY() << ")";
 }
