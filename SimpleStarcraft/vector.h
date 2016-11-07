@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 class Vector
 {
 private:
@@ -7,7 +9,7 @@ private:
 	float y;
 
 public:
-	Vector(float x, float y);
+	Vector(float x = 0, float y = 0);
 
 	Vector(float angle, float length, int);
 
@@ -19,13 +21,23 @@ public:
 
 	float getLength() const;
 
+	Vector& operator+=(const Vector& a);
+
+	Vector& operator-=(const Vector& a);
+
+	Vector& operator*=(float a);
+
+	const Vector operator+(const Vector& a) const;
+
+	const Vector operator-(const Vector& a) const;
+
 	float operator*(const Vector& a) const;
 
-	Vector& operator+(const Vector& a) const;
+	const Vector operator*(float a) const;
 
-	Vector& operator-() const;
+	const Vector operator-() const;
 
-	Vector& operator-(const Vector& a) const;
+	friend std::ostream& operator<<(std::ostream& a, const Vector& b);
 
-	Vector& normalized() const;
+	const Vector normalized() const;
 };

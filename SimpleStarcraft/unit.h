@@ -1,25 +1,22 @@
 #pragma once
 
-#include <SFML\Graphics.hpp>
+#include "vector.h"
 
 class Unit
 {
 private:
-	sf::Vector2f position;
-	sf::Vector2f destination;
-	sf::Vector2f orig;
+	Vector position;
+	Vector destination;
+	Vector movingVector;
+	float speed;
 	bool moving;
 
 public:
 	Unit(float x = 0, float y = 0);
 
-	void move(float x, float y);
+	void startMovingTo(float x, float y);
 
-	const sf::Vector2f& multiply(const sf::Vector2f& a, float b);
+	void update(float dt);
 
-	float Unit::abs(const sf::Vector2f& a);
-
-	void update(double dt);
-
-	const sf::Vector2f& getPosition();
+	const Vector& getPosition();
 };

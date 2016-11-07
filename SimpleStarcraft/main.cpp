@@ -18,6 +18,7 @@ int main()
 
 	sf::Clock clock;
 	float prevTime = clock.getElapsedTime().asSeconds();
+	bool prevPressed = false;
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -33,15 +34,20 @@ int main()
 
 		window.clear();
 
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+		bool pressed = sf::Mouse::isButtonPressed(sf::Mouse::Right);
+
+		if (!prevPressed && pressed)
 		{
 			auto mousePosition = sf::Mouse::getPosition(window);
-			a.move(mousePosition.x, mousePosition.y);
+			a.startMovingTo(mousePosition.x, mousePosition.y);
 		}
+
+		prevPressed = pressed;
 
 		a.update(dt);
 
-		circle.setPosition(a.getPosition());
+		auto pos = a.getPosition();
+		circle.setPosition(sf::Vector2f(pos.getX(), pos.getY()));
 		window.draw(circle);
 
 		window.display();

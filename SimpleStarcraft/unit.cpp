@@ -1,46 +1,42 @@
-#include <SFML\Graphics.hpp>
+#define _USE_MATH_DEFINES
+
 #include "unit.h"
 #include <cmath>
+#include "vector.h"
+#include <iostream>
 
 Unit::Unit(float x, float y)
 {
-	position = sf::Vector2f(x, y);
+	position = Vector(x, y);
+	moving = false;
+	speed = 120;
 }
 
-void Unit::move(float x, float y)
+void Unit::startMovingTo(float x, float y)
 {
 	moving = true;
-	destination = sf::Vector2f(x, y);
-	orig = position;
+	destination = Vector(x, y);
+	movingVector = (destination - position).normalized() * speed;
 }
 
-const sf::Vector2f& Unit::multiply(const sf::Vector2f& a, float b)
-{
-	return sf::Vector2f(a.x * b, a.y * b);
-}
-
-float Unit::abs(const sf::Vector2f& a)
-{
-	return std::sqrt(a.x * a.x + a.y * a.y);
-}
-
-void Unit::update(double dt)
+void Unit::update(float dt)
 {
 	if (moving)
 	{
-		if (abs(destination - position) < 1)
+		std::cout << (destination - position).getLength() << std::endl;
+		if ((destination - position).getLength() < 1)
 		{
 			position = destination;
 			moving = false;
 		}
 		else
 		{
-			position += multiply((destination - orig), dt);
+			position = position + movingVector * dt;
 		}
 	}
 }
 
-const sf::Vector2f& Unit::getPosition()
+const Vector& Unit::getPosition()
 {
 	return position;
 }
