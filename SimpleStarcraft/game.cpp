@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "vector.h"
 
-Game::Game() : units(vector<Unit>()), selected(0)
+Game::Game() : units(std::vector<Unit>()), selected(0)
 {
 	units.push_back(Unit());
 }

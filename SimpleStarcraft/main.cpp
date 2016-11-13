@@ -1,9 +1,8 @@
 #include <iostream>
 #include <cmath>
-
+#include <queue>
 #include <SFML/Graphics.hpp>
 #include "constants.h"
-#include "unit.h"
 #include "game.h"
 #include "vector.h"
 
@@ -15,6 +14,7 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
 	
 	Game game;
+	std::queue<float> frameTimes;
 
 	sf::Clock clock;
 	float prevTime = clock.getElapsedTime().asSeconds();
@@ -30,7 +30,13 @@ int main()
 
 		float time = clock.getElapsedTime().asSeconds();
 		float dt = time - prevTime;
-		prevTime = clock.getElapsedTime().asSeconds();
+		prevTime = time;
+		
+		frameTimes.push(time);
+		while (frameTimes.front() < time - FPS_PERIOD)
+		    frameTimes.pop();
+		float fps = frameTimes.size() / FPS_PERIOD;
+		std::cout << fps << std::endl;
 
 		bool pressed = sf::Mouse::isButtonPressed(sf::Mouse::Right);
 		if (!prevPressed && pressed)
