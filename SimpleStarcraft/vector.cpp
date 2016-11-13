@@ -2,11 +2,7 @@
 #include <cmath>
 #include <iostream>
 
-Vector::Vector(float x_, float y_)
-{
-	x = x_;
-	y = y_;
-}
+Vector::Vector(float x_, float y_) : x(x_), y(y_) {}
 
 Vector::Vector(float angle, float length, int)
 {
