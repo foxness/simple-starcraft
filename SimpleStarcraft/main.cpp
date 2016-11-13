@@ -24,10 +24,7 @@ int main()
 		while (window.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
-			{
 				window.close();
-				continue;
-			}
 		}
 
 		float time = clock.getElapsedTime().asSeconds();
@@ -42,7 +39,7 @@ int main()
 
 		bool pressed = sf::Mouse::isButtonPressed(sf::Mouse::Right);
 		if (!prevPressed && pressed)
-			game.click(Vector::from(sf::Mouse::getPosition(window)), sf::Mouse::Right);
+			game.click(Vector(sf::Mouse::getPosition(window)), sf::Mouse::Right);
 		prevPressed = pressed;
 
 		game.update(dt);
