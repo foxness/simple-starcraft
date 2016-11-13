@@ -4,6 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include "constants.h"
 #include "unit.h"
+#include "game.h"
+#include "vector.h"
 
 int main()
 {
@@ -11,10 +13,8 @@ int main()
 	settings.antialiasingLevel = 8;
 
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
-	sf::CircleShape circle(10);
-	circle.setFillColor(sf::Color::Green);
-
-	Unit a;
+	
+	Game game;
 
 	sf::Clock clock;
 	float prevTime = clock.getElapsedTime().asSeconds();
@@ -32,23 +32,15 @@ int main()
 		float dt = time - prevTime;
 		prevTime = clock.getElapsedTime().asSeconds();
 
-		window.clear();
-
 		bool pressed = sf::Mouse::isButtonPressed(sf::Mouse::Right);
-
 		if (!prevPressed && pressed)
 		{
-			auto mousePosition = sf::Mouse::getPosition(window);
-			a.startMovingTo(mousePosition.x, mousePosition.y);
+			game.click(Vector::from(sf::Mouse::getPosition(window)), sf::Mouse::Right);
 		}
-
 		prevPressed = pressed;
 
-		a.update(dt);
-
-		auto pos = a.getPosition();
-		circle.setPosition(sf::Vector2f(pos.getX(), pos.getY()));
-		window.draw(circle);
+		game.update(dt);
+		game.draw(window);
 
 		window.display();
 	}

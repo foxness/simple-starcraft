@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <SFML/Graphics.hpp>
 
 class Vector
 {
@@ -12,6 +13,8 @@ public:
 	Vector(float x = 0, float y = 0);
 
 	Vector(float angle, float length, int);
+	
+	static const Vector& from(const sf::Vector2i& a);
 
 	float getX() const;
 

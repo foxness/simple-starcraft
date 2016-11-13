@@ -6,10 +6,7 @@
 #include <iostream>
 #include "entity.h"
 
-Unit::Unit(const Vector& position_, float health_, int size_, float moveSpeed_) : Entity(position_, health_, size_), moveSpeed(moveSpeed_)
-{
-	moving = false;
-}
+Unit::Unit(const Vector& position_, float health_, int size_, float moveSpeed_) : Entity(position_, health_, size_), moveSpeed(moveSpeed_), moving(false) {}
 
 void Unit::startMovingTo(const Vector& location)
 {
