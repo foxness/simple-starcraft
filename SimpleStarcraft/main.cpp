@@ -7,9 +7,6 @@
 
 int main()
 {
-	sf::ContextSettings settings;
-	settings.antialiasingLevel = 8;
-	
 	Game game;
 	std::queue<float> frameTimes;
 	
@@ -17,7 +14,9 @@ int main()
 	float prevTime = clock.getElapsedTime().asSeconds();
 	bool prevPressed = false;
 	
-	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
+	sf::ContextSettings settings;
+	settings.antialiasingLevel = 8;
+	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE, sf::Style::Titlebar | sf::Style::Close, settings);
 	while (window.isOpen())
 	{
 		sf::Event event;
