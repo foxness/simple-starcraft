@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "vector.h"
-#include "gameObject.h"
+#include "gameobject.h"
 
 class Entity : public GameObject
 {

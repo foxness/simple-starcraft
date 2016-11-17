@@ -2,7 +2,7 @@
 
 #include <vector>
 #include <SFML/Graphics.hpp>
-#include "gameObject.h"
+#include "gameobject.h"
 #include "vector.h"
 #include "unit.h"
 

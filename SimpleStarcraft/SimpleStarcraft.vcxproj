@@ -162,7 +162,7 @@
     <ClInclude Include="constants.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="game.h" />
-    <ClInclude Include="gameObject.h" />
+    <ClInclude Include="gameobject.h" />
     <ClInclude Include="unit.h" />
     <ClInclude Include="vector.h" />
   </ItemGroup>
