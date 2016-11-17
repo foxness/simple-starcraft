@@ -5,14 +5,14 @@
 
 class Unit : public Entity
 {
-private:
+protected:
 	Vector destination;
 	Vector moveVector;
 	float moveSpeed;
 	bool moving;
 
 public:
-	Unit(const Vector& position_ = Vector(), float health_ = 10, int size_ = 50, float moveSpeed_ = 120);
+	Unit(const Vector& position_ = Vector(), float health_ = 10, int size_ = 10, float moveSpeed_ = 150);
 	
     virtual void update(float dt) override;
 	

@@ -1,12 +1,14 @@
 #pragma once
+
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include "gameObject.h"
 #include "vector.h"
+#include "unit.h"
 
 class Game : public GameObject
 {
-private:
+protected:
     std::vector<Unit> units;
     int selected;
     

@@ -3,25 +3,28 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include "vector.h"
+#include <iostream>
 
 Game::Game() : units(std::vector<Unit>()), selected(0)
 {
 	units.push_back(Unit());
 }
 
-virtual void Game::click(const Vector& location, const sf::Mouse::Button& button)
+void Game::click(const Vector& location, const sf::Mouse::Button& button)
 {
 	if (button == sf::Mouse::Right)
-	    units[selected].startMovingTo(location);
+	{
+		units[selected].startMovingTo(location);
+	}
 }
 
-virtual void Game::update(float dt) override
+void Game::update(float dt)
 {
 	for (auto& unit : units)
 	    unit.update(dt);
 }
 
-virtual void Game::draw(sf::RenderWindow& rw) const override
+void Game::draw(sf::RenderWindow& rw) const
 {
 	rw.clear();
 	for (const auto& unit : units)

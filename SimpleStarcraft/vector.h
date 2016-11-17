@@ -5,7 +5,7 @@
 
 class Vector
 {
-private:
+protected:
 	float x;
 	float y;
 

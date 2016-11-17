@@ -9,6 +9,7 @@ int main()
 {
 	Game game;
 	std::queue<float> frameTimes;
+	float counter = 0;
 	
 	sf::Clock clock;
 	float prevTime = clock.getElapsedTime().asSeconds();
@@ -31,10 +32,16 @@ int main()
 		prevTime = time;
 		
 		frameTimes.push(time);
-		while (frameTimes.front() < time - FPS_PERIOD)
+		while (frameTimes.front() < time - FPS_CALC_PERIOD)
 		    frameTimes.pop();
-		float fps = frameTimes.size() / FPS_PERIOD;
-		std::cout << fps << std::endl;
+		float fps = frameTimes.size() / FPS_CALC_PERIOD;
+
+		counter += dt;
+		if (counter >= FPS_DISPLAY_PERIOD)
+			std::cout << "FPS: " << fps << std::endl;
+
+		while (counter >= FPS_DISPLAY_PERIOD)
+			counter -= FPS_DISPLAY_PERIOD;
 
 		bool pressed = sf::Mouse::isButtonPressed(sf::Mouse::Right);
 		if (!prevPressed && pressed)

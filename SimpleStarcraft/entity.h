@@ -1,11 +1,12 @@
 #pragma once
+
 #include <SFML/Graphics.hpp>
 #include "vector.h"
 #include "gameObject.h"
 
 class Entity : public GameObject
 {
-private:
+protected:
     Vector position;
     float health;
     int size;

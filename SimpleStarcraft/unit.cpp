@@ -15,7 +15,7 @@ void Unit::startMovingTo(const Vector& location)
 	moveVector = (destination - position).normalized() * moveSpeed;
 }
 
-virtual void Unit::update(float dt) override
+void Unit::update(float dt)
 {
 	if (moving)
 	{
