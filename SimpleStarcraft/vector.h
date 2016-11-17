@@ -1,10 +1,11 @@
 #pragma once
 
 #include <iostream>
+#include <SFML/Graphics.hpp>
 
 class Vector
 {
-private:
+protected:
 	float x;
 	float y;
 
@@ -12,6 +13,8 @@ public:
 	Vector(float x = 0, float y = 0);
 
 	Vector(float angle, float length, int);
+	
+	Vector(const sf::Vector2i& a);
 
 	float getX() const;
 

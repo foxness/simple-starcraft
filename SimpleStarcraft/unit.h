@@ -1,22 +1,24 @@
 #pragma once
 
 #include "vector.h"
+#include "entity.h"
 
-class Unit
+class Unit : public Entity
 {
-private:
-	Vector position;
+protected:
 	Vector destination;
-	Vector movingVector;
-	float speed;
+	Vector moveVector;
+	float moveSpeed;
 	bool moving;
 
 public:
-	Unit(float x = 0, float y = 0);
-
-	void startMovingTo(float x, float y);
-
-	void update(float dt);
-
-	const Vector& getPosition();
+	Unit(const Vector& position_ = Vector(), float health_ = 10, int size_ = 10, float moveSpeed_ = 150);
+	
+    virtual void update(float dt) override;
+	
+	void startMovingTo(const Vector& location);
+	
+	float getMovespeed() const;
+	
+	bool isMoving() const;
 };

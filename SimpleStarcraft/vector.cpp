@@ -1,18 +1,17 @@
 #include "vector.h"
 #include <cmath>
 #include <iostream>
+#include <SFML/Graphics.hpp>
 
-Vector::Vector(float x_, float y_)
-{
-	x = x_;
-	y = y_;
-}
+Vector::Vector(float x_, float y_) : x(x_), y(y_) {}
 
 Vector::Vector(float angle, float length, int)
 {
 	x = length * std::cosf(angle);
 	y = length * std::sinf(angle);
 }
+
+Vector::Vector(const sf::Vector2i& a) : Vector(a.x, a.y) {}
 
 float Vector::getX() const
 {

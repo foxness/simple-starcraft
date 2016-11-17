@@ -4,26 +4,21 @@
 #include <cmath>
 #include "vector.h"
 #include <iostream>
+#include "entity.h"
 
-Unit::Unit(float x, float y)
-{
-	position = Vector(x, y);
-	moving = false;
-	speed = 120;
-}
+Unit::Unit(const Vector& position_, float health_, int size_, float moveSpeed_) : Entity(position_, health_, size_), moveSpeed(moveSpeed_), moving(false) {}
 
-void Unit::startMovingTo(float x, float y)
+void Unit::startMovingTo(const Vector& location)
 {
 	moving = true;
-	destination = Vector(x, y);
-	movingVector = (destination - position).normalized() * speed;
+	destination = location;
+	moveVector = (destination - position).normalized() * moveSpeed;
 }
 
 void Unit::update(float dt)
 {
 	if (moving)
 	{
-		std::cout << (destination - position).getLength() << std::endl;
 		if ((destination - position).getLength() < 1)
 		{
 			position = destination;
@@ -31,12 +26,17 @@ void Unit::update(float dt)
 		}
 		else
 		{
-			position = position + movingVector * dt;
+			position += moveVector * dt;
 		}
 	}
 }
 
-const Vector& Unit::getPosition()
+float Unit::getMovespeed() const
 {
-	return position;
+	return moveSpeed;
+}
+
+bool Unit::isMoving() const
+{
+	return moving;
 }
