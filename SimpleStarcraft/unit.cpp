@@ -6,7 +6,7 @@
 #include <iostream>
 #include "entity.h"
 
-Unit::Unit(const Vector& position_, float health_, int size_, float moveSpeed_) : Entity(position_, health_, size_), moveSpeed(moveSpeed_), moving(false) {}
+Unit::Unit(const Vector& position_, int size_, float moveSpeed_) : Entity(position_, size_), moveSpeed(moveSpeed_), moving(false) {}
 
 void Unit::startMovingTo(const Vector& location)
 {
@@ -17,7 +17,7 @@ void Unit::startMovingTo(const Vector& location)
 
 void Unit::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	target.draw(*drawable, states.transform.translate(position.getX(), position.getY()));
+	target.draw(*drawable, states);
 }
 
 void Unit::update(float dt)

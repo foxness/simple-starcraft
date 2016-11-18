@@ -8,15 +8,12 @@ class Entity : public GameObject
 {
 protected:
     Vector position;
-    float health;
     int size;
 
-	Entity(Vector position_, float health, int size_);
+	Entity(Vector position_, int size_);
     
 public:
     const Vector& getPosition() const;
-    
-    float getHealth() const;
     
     int getSize() const;
 };

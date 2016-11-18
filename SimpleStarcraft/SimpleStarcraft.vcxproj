@@ -152,7 +152,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="complexdrawable.cpp" />
     <ClCompile Include="entity.cpp" />
+    <ClCompile Include="entitydrawable.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="unit.cpp" />
@@ -160,8 +162,10 @@
     <ClCompile Include="zealot.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="complexdrawable.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="entity.h" />
+    <ClInclude Include="entitydrawable.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="gameobject.h" />
     <ClInclude Include="unit.h" />

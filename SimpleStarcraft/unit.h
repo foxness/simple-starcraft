@@ -14,7 +14,7 @@ protected:
 	float moveSpeed;
 	bool moving;
 
-	Unit(const Vector& position_, float health_, int size_, float moveSpeed_);
+	Unit(const Vector& position_, int size_, float moveSpeed_);
 
 public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const override;
