@@ -1,11 +1,10 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Drawable.hpp>
 
-class GameObject
+class GameObject : public sf::Drawable
 {
 public:
 	virtual void update(float dt) = 0;
-	
-	virtual void draw(sf::RenderWindow& rw) const = 0;
 };

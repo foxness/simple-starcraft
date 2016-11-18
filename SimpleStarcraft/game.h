@@ -9,7 +9,7 @@
 class Game : public GameObject
 {
 protected:
-    std::vector<Unit> units;
+    std::vector<Unit*> units;
     int selected;
     
 public:
@@ -19,5 +19,5 @@ public:
     
     virtual void update(float dt) override;
     
-    virtual void draw(sf::RenderWindow& rw) const override;
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const override;
 };

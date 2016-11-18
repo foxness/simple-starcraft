@@ -49,7 +49,7 @@ int main()
 		prevPressed = pressed;
 
 		game.update(dt);
-		game.draw(window);
+		window.draw(game);
 
 		window.display();
 	}

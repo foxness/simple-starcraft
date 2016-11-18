@@ -4,29 +4,30 @@
 #include <SFML/Graphics.hpp>
 #include "vector.h"
 #include <iostream>
+#include "zealot.h"
 
-Game::Game() : units(std::vector<Unit>()), selected(0)
+Game::Game() : units(std::vector<Unit*>()), selected(0)
 {
-	units.push_back(Unit());
+	units.push_back(new Zealot(Vector()));
 }
 
 void Game::click(const Vector& location, const sf::Mouse::Button& button)
 {
 	if (button == sf::Mouse::Right)
 	{
-		units[selected].startMovingTo(location);
+		units[selected]->startMovingTo(location);
 	}
 }
 
 void Game::update(float dt)
 {
 	for (auto& unit : units)
-	    unit.update(dt);
+	    unit->update(dt);
 }
 
-void Game::draw(sf::RenderWindow& rw) const
+void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	rw.clear();
+	target.clear();
 	for (const auto& unit : units)
-	    unit.draw(rw);
+		target.draw(*unit, states);
 }

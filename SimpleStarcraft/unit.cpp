@@ -15,6 +15,11 @@ void Unit::startMovingTo(const Vector& location)
 	moveVector = (destination - position).normalized() * moveSpeed;
 }
 
+void Unit::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	target.draw(*drawable, states.transform.translate(position.getX(), position.getY()));
+}
+
 void Unit::update(float dt)
 {
 	if (moving)
