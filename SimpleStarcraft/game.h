@@ -5,11 +5,12 @@
 #include "gameobject.h"
 #include "vector.h"
 #include "unit.h"
+#include <memory>
 
 class Game : public GameObject
 {
 protected:
-    std::vector<Unit*> units;
+    std::vector<std::unique_ptr<Unit>> units;
     int selected;
     
 public:

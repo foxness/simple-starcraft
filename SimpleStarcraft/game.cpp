@@ -5,10 +5,11 @@
 #include "vector.h"
 #include <iostream>
 #include "zealot.h"
+#include <memory>
 
-Game::Game() : units(std::vector<Unit*>()), selected(0)
+Game::Game() : units(std::vector<std::unique_ptr<Unit>>()), selected(0)
 {
-	units.push_back(new Zealot(Vector()));
+	units.push_back(std::make_unique<Zealot>(Vector()));
 }
 
 void Game::click(const Vector& location, const sf::Mouse::Button& button)
