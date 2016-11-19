@@ -157,8 +157,10 @@
     <ClCompile Include="entitybase.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mineralpatch.cpp" />
     <ClCompile Include="nexus.cpp" />
     <ClCompile Include="rectangle.cpp" />
+    <ClCompile Include="resource.cpp" />
     <ClCompile Include="structure.cpp" />
     <ClCompile Include="unit.cpp" />
     <ClCompile Include="vector.cpp" />
@@ -171,8 +173,10 @@
     <ClInclude Include="entitybase.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="gameobject.h" />
+    <ClInclude Include="mineralpatch.h" />
     <ClInclude Include="nexus.h" />
     <ClInclude Include="rectangle.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="structure.h" />
     <ClInclude Include="unit.h" />
     <ClInclude Include="vector.h" />

@@ -2,6 +2,7 @@
 #include "zealot.h"
 #include "rectangle.h"
 #include "nexus.h"
+#include "mineralpatch.h"
 #include <iostream>
 #include <typeinfo>
 #include <cassert>
@@ -10,6 +11,7 @@ Game::Game()
 {
 	structures.push_back(std::make_shared<Nexus>(Vector(400, 500)));
 	units.push_back(std::make_shared<Zealot>(Vector(200, 300)));
+	resources.push_back(std::make_shared<MineralPatch>(Vector(450, 300)));
 }
 
 void Game::printSelected() const
@@ -75,10 +77,21 @@ void Game::update(float dt)
 {
 	for (auto& unit : units)
 	    unit->update(dt);
+
+	//for (auto& structure : structures)
+	//	structure->update(dt);
+
+	//for (auto& resource : resources)
+	//	resource->update(dt);
 }
 
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+	for (const auto& resource : resources)
+	{
+		target.draw(*resource, states);
+	}
+
 	for (const auto& structure : structures)
 	{
 		target.draw(*structure, states);
