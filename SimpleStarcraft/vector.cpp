@@ -11,6 +11,8 @@ Vector::Vector(float angle, float length, int)
 	y = length * std::sinf(angle);
 }
 
+Vector::Vector(const sf::Vector2f& a) : Vector(a.x, a.y) {}
+
 Vector::Vector(const sf::Vector2i& a) : Vector(a.x, a.y) {}
 
 float Vector::getX() const

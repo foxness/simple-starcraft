@@ -25,9 +25,6 @@ void Window::mainLoop()
 		{ sf::Mouse::Middle, false },
 	};
 
-	Vector selectionStart;
-	bool selecting = false;
-
 	while (rw.isOpen())
 	{
 		sf::Event event;
@@ -57,15 +54,15 @@ void Window::mainLoop()
 		for (const auto& button : prevMouse)
 			mouse[button.first] = sf::Mouse::isButtonPressed(button.first);
 
-		if (selecting && !mouse[sf::Mouse::Left])
+		game.setMousePosition(sf::Mouse::getPosition(rw));
+
+		if (game.isSelecting() && !mouse[sf::Mouse::Left])
 		{
-			game.select(selectionStart, Vector(sf::Mouse::getPosition(rw)));
-			selecting = false;
+			game.endSelection();
 		}
 		else if (!prevMouse[sf::Mouse::Left] && mouse[sf::Mouse::Left])
 		{
-			selectionStart = Vector(sf::Mouse::getPosition(rw));
-			selecting = true;
+			game.startSelection();
 		}
 		else if (!prevMouse[sf::Mouse::Right] && mouse[sf::Mouse::Right])
 		{

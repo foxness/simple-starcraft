@@ -10,15 +10,24 @@ class Game : public GameObject
 protected:
     std::vector<std::shared_ptr<Unit>> units;
 	std::vector<std::shared_ptr<Unit>> selectedUnits;
+	Vector mousePosition;
+	Vector selectionStart;
+	bool selecting = false;
     
 public:
     Game();
 
 	void printSelected() const;
 
-	void select(const Vector& start, const Vector& end);
+	void setMousePosition(const Vector& mousePosition_);
+
+	void startSelection();
+
+	void endSelection();
     
     void moveSelected(const Vector& location);
+
+	bool isSelecting() const;
     
     virtual void update(float dt) override;
     

@@ -14,6 +14,8 @@ public:
 
 	Vector(float angle, float length, int);
 	
+	Vector(const sf::Vector2f& a);
+
 	Vector(const sf::Vector2i& a);
 
 	float getX() const;
