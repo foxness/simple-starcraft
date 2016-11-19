@@ -11,6 +11,8 @@ protected:
 	Entity(const Vector& position_, int size_, float health_);
 
 public:
+	virtual void drawSelection(sf::RenderTarget& target) const;
+
 	int getSize() const;
 
 	float getHealth() const;

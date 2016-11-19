@@ -6,7 +6,7 @@ const int Window::WINDOW_WIDTH = 800;
 const int Window::WINDOW_HEIGHT = 600;
 const char* const Window::WINDOW_TITLE = "Simple Starcraft";
 const float Window::FPS_CALC_PERIOD = 1;
-const float Window::FPS_DISPLAY_PERIOD = 1;
+const float Window::FPS_DISPLAY_PERIOD = 3;
 
 Window::Window()
 {
@@ -72,6 +72,8 @@ void Window::mainLoop()
 		prevMouse = mouse;
 
 		game.update(dt);
+
+		rw.clear();
 		rw.draw(game);
 
 		rw.display();

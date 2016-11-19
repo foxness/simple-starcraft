@@ -63,9 +63,11 @@ void Game::update(float dt)
 
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	target.clear();
 	for (const auto& unit : units)
 		target.draw(*unit, states);
+
+	for (const auto& selected : selectedUnits)
+		selected->drawSelection(target);
 
 	if (selecting)
 	{
