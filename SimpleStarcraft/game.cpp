@@ -1,17 +1,38 @@
 #include "game.h"
 #include "zealot.h"
+#include "rectangle.h"
+#include <iostream>
+#include <typeinfo>
 
-Game::Game() : units(std::vector<std::unique_ptr<Unit>>()), selected(0)
+Game::Game() : units(std::vector<std::shared_ptr<Unit>>()), selectedUnits(std::vector<std::shared_ptr<Unit>>())
 {
-	units.push_back(std::make_unique<Zealot>(Vector()));
+	auto z = std::make_shared<Zealot>(Vector());
+	units.push_back(z);
+	selectedUnits.push_back(z);
 }
 
-void Game::click(const Vector& location, const sf::Mouse::Button& button)
+void Game::printSelected() const
 {
-	if (button == sf::Mouse::Right)
-	{
-		units[selected]->startMovingTo(location);
-	}
+	std::cout << "selected: ";
+	for (const auto& unit : selectedUnits)
+		std::cout << typeid(*unit).name() << " ";
+	std::cout << std::endl;
+}
+
+void Game::select(const Vector& start, const Vector& end)
+{
+	auto rect = Rectangle(start, end);
+	selectedUnits.clear();
+	for (const auto& unit : units)
+		if (rect.contains(unit->getPosition()))
+			selectedUnits.push_back(unit);
+	printSelected();
+}
+
+void Game::moveSelected(const Vector& location)
+{
+	for (auto& selected : selectedUnits)
+		selected->startMovingTo(location);
 }
 
 void Game::update(float dt)

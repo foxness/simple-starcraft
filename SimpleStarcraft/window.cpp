@@ -1,5 +1,6 @@
 #include "window.h"
 #include <iostream>
+#include <map>
 
 const int Window::WINDOW_WIDTH = 800;
 const int Window::WINDOW_HEIGHT = 600;
@@ -16,7 +17,16 @@ Window::Window()
 void Window::mainLoop()
 {
 	float prevTime = clock.getElapsedTime().asSeconds();
-	bool prevPressed = false;
+
+	std::map<sf::Mouse::Button, bool> prevMouse =
+	{
+		{ sf::Mouse::Left, false },
+		{ sf::Mouse::Right, false },
+		{ sf::Mouse::Middle, false },
+	};
+
+	Vector selectionStart;
+	bool selecting = false;
 
 	while (rw.isOpen())
 	{
@@ -43,10 +53,26 @@ void Window::mainLoop()
 		while (counter >= FPS_DISPLAY_PERIOD)
 			counter -= FPS_DISPLAY_PERIOD;
 
-		bool pressed = sf::Mouse::isButtonPressed(sf::Mouse::Right);
-		if (!prevPressed && pressed)
-			game.click(Vector(sf::Mouse::getPosition(rw)), sf::Mouse::Right);
-		prevPressed = pressed;
+		std::map<sf::Mouse::Button, bool> mouse;
+		for (const auto& button : prevMouse)
+			mouse[button.first] = sf::Mouse::isButtonPressed(button.first);
+
+		if (selecting && !mouse[sf::Mouse::Left])
+		{
+			game.select(selectionStart, Vector(sf::Mouse::getPosition(rw)));
+			selecting = false;
+		}
+		else if (!prevMouse[sf::Mouse::Left] && mouse[sf::Mouse::Left])
+		{
+			selectionStart = Vector(sf::Mouse::getPosition(rw));
+			selecting = true;
+		}
+		else if (!prevMouse[sf::Mouse::Right] && mouse[sf::Mouse::Right])
+		{
+			game.moveSelected(Vector(sf::Mouse::getPosition(rw)));
+		}
+
+		prevMouse = mouse;
 
 		game.update(dt);
 		rw.draw(game);

@@ -157,6 +157,7 @@
     <ClCompile Include="entitybase.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="rectangle.cpp" />
     <ClCompile Include="unit.cpp" />
     <ClCompile Include="vector.cpp" />
     <ClCompile Include="window.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="entitybase.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="gameobject.h" />
+    <ClInclude Include="rectangle.h" />
     <ClInclude Include="unit.h" />
     <ClInclude Include="vector.h" />
     <ClInclude Include="window.h" />

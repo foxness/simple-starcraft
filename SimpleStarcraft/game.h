@@ -8,13 +8,17 @@
 class Game : public GameObject
 {
 protected:
-    std::vector<std::unique_ptr<Unit>> units;
-    int selected;
+    std::vector<std::shared_ptr<Unit>> units;
+	std::vector<std::shared_ptr<Unit>> selectedUnits;
     
 public:
     Game();
+
+	void printSelected() const;
+
+	void select(const Vector& start, const Vector& end);
     
-    virtual void click(const Vector& location, const sf::Mouse::Button& button);
+    void moveSelected(const Vector& location);
     
     virtual void update(float dt) override;
     
