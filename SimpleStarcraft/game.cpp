@@ -43,9 +43,12 @@ void Game::endSelection()
 		if (rect.contains(unit->getPosition()))
 			selectedEntities.push_back(unit);
 
-	for (const auto& structure : structures)
-		if (rect.contains(structure->getPosition()))
-			selectedEntities.push_back(structure);
+	if (selectedEntities.size() == 0)
+	{
+		for (const auto& structure : structures)
+			if (rect.contains(structure->getPosition()))
+				selectedEntities.push_back(structure);
+	}
 
 	printSelected();
 	selecting = false;
@@ -77,10 +80,16 @@ void Game::update(float dt)
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	for (const auto& structure : structures)
+	{
 		target.draw(*structure, states);
+		structure->drawHealthbar(target, states);
+	}
 
 	for (const auto& unit : units)
+	{
 		target.draw(*unit, states);
+		unit->drawHealthbar(target, states);
+	}
 
 	for (const auto& selected : selectedEntities)
 		selected->drawSelection(target);

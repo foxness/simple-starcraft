@@ -1,6 +1,6 @@
 #include "nexus.h"
 
-Nexus::Nexus(const Vector& position_) : Structure(position_, 75, 500) {}
+Nexus::Nexus(const Vector& position_) : Structure(position_, 48, 500) {}
 
 void Nexus::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {

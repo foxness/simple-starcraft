@@ -4,7 +4,7 @@
 #include <cmath>
 #include <iostream>
 
-Unit::Unit(const Vector& position_, int size_, float health_, float moveSpeed_) : Entity(position_, size_, health_), moveSpeed(moveSpeed_), moving(false) {}
+Unit::Unit(const Vector& position_, int size_, float maxHealth_, float moveSpeed_) : Entity(position_, size_, maxHealth_), moveSpeed(moveSpeed_) {}
 
 void Unit::startMovingTo(const Vector& location)
 {

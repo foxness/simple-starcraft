@@ -8,9 +8,9 @@ protected:
 	Vector destination;
 	Vector moveVector;
 	float moveSpeed;
-	bool moving;
+	bool moving = false;
 
-	Unit(const Vector& position_, int size_, float health_, float moveSpeed_);
+	Unit(const Vector& position_, int size_, float maxHealth_, float moveSpeed_);
 
 public:
     virtual void update(float dt) override;
