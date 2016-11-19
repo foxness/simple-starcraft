@@ -1,22 +1,22 @@
 #include "game.h"
 #include "zealot.h"
 #include "rectangle.h"
+#include "nexus.h"
 #include <iostream>
 #include <typeinfo>
 #include <cassert>
 
-Game::Game() : units(std::vector<std::shared_ptr<Unit>>()), selectedUnits(std::vector<std::shared_ptr<Unit>>())
+Game::Game()
 {
-	auto z = std::make_shared<Zealot>(Vector());
-	units.push_back(z);
-	selectedUnits.push_back(z);
+	structures.push_back(std::make_shared<Nexus>(Vector(400, 500)));
+	units.push_back(std::make_shared<Zealot>(Vector(200, 300)));
 }
 
 void Game::printSelected() const
 {
 	std::cout << "selected: ";
-	for (const auto& unit : selectedUnits)
-		std::cout << typeid(*unit).name() << " ";
+	for (const auto& entity : selectedEntities)
+		std::cout << typeid(*entity).name() << " ";
 	std::cout << std::endl;
 }
 
@@ -36,18 +36,31 @@ void Game::endSelection()
 {
 	assert(selecting);
 	auto rect = Rectangle(selectionStart, mousePosition);
-	selectedUnits.clear();
+
+	selectedEntities.clear();
+
 	for (const auto& unit : units)
 		if (rect.contains(unit->getPosition()))
-			selectedUnits.push_back(unit);
+			selectedEntities.push_back(unit);
+
+	for (const auto& structure : structures)
+		if (rect.contains(structure->getPosition()))
+			selectedEntities.push_back(structure);
+
 	printSelected();
 	selecting = false;
 }
 
 void Game::moveSelected(const Vector& location)
 {
-	for (auto& selected : selectedUnits)
-		selected->startMovingTo(location);
+	for (const auto& selected : selectedEntities)
+	{
+		auto unit = std::dynamic_pointer_cast<Unit>(selected);
+		if (unit)
+		{
+			unit->startMovingTo(location);
+		}
+	}
 }
 
 bool Game::isSelecting() const
@@ -63,10 +76,13 @@ void Game::update(float dt)
 
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+	for (const auto& structure : structures)
+		target.draw(*structure, states);
+
 	for (const auto& unit : units)
 		target.draw(*unit, states);
 
-	for (const auto& selected : selectedUnits)
+	for (const auto& selected : selectedEntities)
 		selected->drawSelection(target);
 
 	if (selecting)

@@ -8,5 +8,5 @@ void Zealot::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	sf::CircleShape s(size);
 	s.setPosition(position);
 	s.setOrigin(Vector(size, size));
-	target.draw(s);
+	target.draw(s, states);
 }

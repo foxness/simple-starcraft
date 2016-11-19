@@ -41,7 +41,7 @@ void Window::mainLoop()
 		frameTimes.push(time);
 		while (frameTimes.front() < time - FPS_CALC_PERIOD)
 			frameTimes.pop();
-		float fps = frameTimes.size() / FPS_CALC_PERIOD;
+		float fps = frameTimes.size() / FPS_CALC_PERIOD - 1;
 
 		counter += dt;
 		if (counter >= FPS_DISPLAY_PERIOD)

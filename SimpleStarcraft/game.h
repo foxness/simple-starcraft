@@ -4,12 +4,14 @@
 #include "gameobject.h"
 #include "unit.h"
 #include <memory>
+#include "structure.h"
 
 class Game : public GameObject
 {
 protected:
     std::vector<std::shared_ptr<Unit>> units;
-	std::vector<std::shared_ptr<Unit>> selectedUnits;
+	std::vector<std::shared_ptr<Structure>> structures;
+	std::vector<std::shared_ptr<Entity>> selectedEntities;
 	Vector mousePosition;
 	Vector selectionStart;
 	bool selecting = false;
