@@ -1,11 +1,5 @@
 #include "game.h"
-#include "unit.h"
-#include <vector>
-#include <SFML/Graphics.hpp>
-#include "vector.h"
-#include <iostream>
 #include "zealot.h"
-#include <memory>
 
 Game::Game() : units(std::vector<std::unique_ptr<Unit>>()), selected(0)
 {

@@ -1,16 +1,13 @@
 #include "entity.h"
-#include <SFML/Graphics.hpp>
-#include "vector.h"
-#include <iostream>
 
-Entity::Entity(Vector position_, int size_) : position(position_), size(size_) {}
-
-const Vector& Entity::getPosition() const
-{
-	return position;
-}
+Entity::Entity(const Vector& position_, int size_, float health_) : EntityBase(position_), size(size_), health(health_) {}
 
 int Entity::getSize() const
 {
 	return size;
+}
+
+float Entity::getHealth() const
+{
+	return health;
 }

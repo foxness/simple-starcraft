@@ -1,9 +1,7 @@
 #pragma once
 
-#include <vector>
 #include <SFML/Graphics.hpp>
 #include "gameobject.h"
-#include "vector.h"
 #include "unit.h"
 #include <memory>
 

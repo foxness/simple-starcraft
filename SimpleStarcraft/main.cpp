@@ -1,9 +1,7 @@
 #include <iostream>
 #include <queue>
-#include <SFML/Graphics.hpp>
 #include "constants.h"
 #include "game.h"
-#include "vector.h"
 
 int main()
 {

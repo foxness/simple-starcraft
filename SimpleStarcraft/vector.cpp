@@ -89,6 +89,11 @@ bool Vector::operator!=(const Vector& a) const
 	return !(*this == a);
 }
 
+Vector::operator sf::Vector2f() const
+{
+	return sf::Vector2f(x, y);
+}
+
 const Vector Vector::normalized() const
 {
 	return Vector(getAngle(), 1, 0);

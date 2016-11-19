@@ -2,22 +2,15 @@
 
 #include "unit.h"
 #include <cmath>
-#include "vector.h"
 #include <iostream>
-#include "entity.h"
 
-Unit::Unit(const Vector& position_, int size_, float moveSpeed_) : Entity(position_, size_), moveSpeed(moveSpeed_), moving(false) {}
+Unit::Unit(const Vector& position_, int size_, float health_, float moveSpeed_) : Entity(position_, size_, health_), moveSpeed(moveSpeed_), moving(false) {}
 
 void Unit::startMovingTo(const Vector& location)
 {
 	moving = true;
 	destination = location;
 	moveVector = (destination - position).normalized() * moveSpeed;
-}
-
-void Unit::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
-	target.draw(*drawable, states);
 }
 
 void Unit::update(float dt)

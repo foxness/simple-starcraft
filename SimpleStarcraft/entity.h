@@ -1,19 +1,17 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
-#include "vector.h"
-#include "gameobject.h"
+#include "entitybase.h"
 
-class Entity : public GameObject
+class Entity : public EntityBase
 {
 protected:
-    Vector position;
-    int size;
+	int size;
+	float health;
 
-	Entity(Vector position_, int size_);
-    
+	Entity(const Vector& position_, int size_, float health_);
+
 public:
-    const Vector& getPosition() const;
-    
-    int getSize() const;
+	int getSize() const;
+
+	float getHealth() const;
 };

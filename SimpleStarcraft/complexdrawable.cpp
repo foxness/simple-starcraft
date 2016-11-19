@@ -1,7 +1,5 @@
 #include "complexdrawable.h"
 #include <SFML/Graphics.hpp>
-#include <vector>
-#include <memory>
 
 ComplexDrawable::ComplexDrawable() {}
 

@@ -154,7 +154,7 @@
   <ItemGroup>
     <ClCompile Include="complexdrawable.cpp" />
     <ClCompile Include="entity.cpp" />
-    <ClCompile Include="entitydrawable.cpp" />
+    <ClCompile Include="entitybase.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="unit.cpp" />
@@ -165,7 +165,7 @@
     <ClInclude Include="complexdrawable.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="entity.h" />
-    <ClInclude Include="entitydrawable.h" />
+    <ClInclude Include="entitybase.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="gameobject.h" />
     <ClInclude Include="unit.h" />

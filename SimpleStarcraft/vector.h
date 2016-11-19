@@ -44,6 +44,8 @@ public:
 
 	bool operator!=(const Vector& a) const;
 
+	operator sf::Vector2f() const;
+
 	friend std::ostream& operator<<(std::ostream& a, const Vector& b);
 
 	const Vector normalized() const;
