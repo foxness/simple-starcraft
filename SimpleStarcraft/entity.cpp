@@ -3,7 +3,11 @@
 #include "entity.h"
 #include <cmath>
 
-Entity::Entity(const Vector& position_, int size_, float maxHealth_) : EntityBase(position_), size(size_), health(maxHealth_), maxHealth(maxHealth_) {}
+Entity::Entity(const Vector& position_, int size_, float maxHealth_, const sf::Color& color_) : EntityBase(position_), size(size_), health(maxHealth_), maxHealth(maxHealth_), shape(sf::CircleShape(size_))
+{
+	shape.setFillColor(color_);
+	shape.setOrigin(size, size);
+}
 
 void Entity::drawSelection(sf::RenderTarget& target) const
 {
@@ -41,6 +45,12 @@ void Entity::drawHealthbar(sf::RenderTarget& target, sf::RenderStates states) co
 
 	target.draw(hb, states);
 	target.draw(bg, states);
+}
+
+void Entity::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	shape.setPosition(position);
+	target.draw(shape, states);
 }
 
 int Entity::getSize() const

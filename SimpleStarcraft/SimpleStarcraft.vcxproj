@@ -90,6 +90,7 @@
       <PreprocessorDefinitions>SFML_STATIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>C:\Users\swirly\Google Drive\programming\libraries\SFML-2.4.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -97,6 +98,9 @@
       <AdditionalLibraryDirectories>C:\Users\swirly\Google Drive\programming\libraries\SFML-2.4.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-window-s-d.lib;sfml-system-s-d.lib;sfml-graphics-s-d.lib;opengl32.lib;freetype.lib;jpeg.lib;winmm.lib;gdi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -152,7 +156,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="complexdrawable.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="entitybase.cpp" />
     <ClCompile Include="game.cpp" />
@@ -169,7 +172,6 @@
     <ClCompile Include="zealot.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="complexdrawable.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="entitybase.h" />
     <ClInclude Include="game.h" />

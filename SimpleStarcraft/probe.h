@@ -6,6 +6,7 @@ class Probe : public Unit
 {
 protected:
 	bool carryingResources = false;
+	mutable sf::RectangleShape res;
 
 public:
 	Probe(const Vector& position_);

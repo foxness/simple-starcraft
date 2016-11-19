@@ -10,12 +10,14 @@ protected:
 	float moveSpeed;
 	bool moving = false;
 
-	Unit(const Vector& position_, int size_, float maxHealth_, float moveSpeed_);
+	Unit(const Vector& position_, int size_, float maxHealth_, float moveSpeed_, const sf::Color& color_);
 
 public:
     virtual void update(float dt) override;
 	
 	virtual void startMovingTo(const Vector& location);
+
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const override;
 	
 	float getMovespeed() const;
 	
