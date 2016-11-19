@@ -159,17 +159,18 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="unit.cpp" />
     <ClCompile Include="vector.cpp" />
+    <ClCompile Include="window.cpp" />
     <ClCompile Include="zealot.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="complexdrawable.h" />
-    <ClInclude Include="constants.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="entitybase.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="gameobject.h" />
     <ClInclude Include="unit.h" />
     <ClInclude Include="vector.h" />
+    <ClInclude Include="window.h" />
     <ClInclude Include="zealot.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
