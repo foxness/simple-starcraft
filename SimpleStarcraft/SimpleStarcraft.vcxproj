@@ -159,6 +159,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mineralpatch.cpp" />
     <ClCompile Include="nexus.cpp" />
+    <ClCompile Include="probe.cpp" />
     <ClCompile Include="rectangle.cpp" />
     <ClCompile Include="resource.cpp" />
     <ClCompile Include="structure.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="gameobject.h" />
     <ClInclude Include="mineralpatch.h" />
     <ClInclude Include="nexus.h" />
+    <ClInclude Include="probe.h" />
     <ClInclude Include="rectangle.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="structure.h" />

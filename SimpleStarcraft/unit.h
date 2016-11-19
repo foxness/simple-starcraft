@@ -15,7 +15,7 @@ protected:
 public:
     virtual void update(float dt) override;
 	
-	void startMovingTo(const Vector& location);
+	virtual void startMovingTo(const Vector& location);
 	
 	float getMovespeed() const;
 	

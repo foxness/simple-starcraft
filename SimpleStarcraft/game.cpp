@@ -3,6 +3,7 @@
 #include "rectangle.h"
 #include "nexus.h"
 #include "mineralpatch.h"
+#include "probe.h"
 #include <iostream>
 #include <typeinfo>
 #include <cassert>
@@ -10,7 +11,10 @@
 Game::Game()
 {
 	structures.push_back(std::make_shared<Nexus>(Vector(400, 500)));
+
 	units.push_back(std::make_shared<Zealot>(Vector(200, 300)));
+	units.push_back(std::make_shared<Probe>(Vector(200, 350)));
+
 	resources.push_back(std::make_shared<MineralPatch>(Vector(450, 300)));
 }
 
