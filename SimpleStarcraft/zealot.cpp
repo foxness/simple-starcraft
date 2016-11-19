@@ -1,4 +1,4 @@
 #include "zealot.h"
-#include "vector.h"
+#include "constants.h"
 
-Zealot::Zealot(const Vector& position_) : Unit(position_, 10, 10, 150, sf::Color(150, 32, 180)) {}
+Zealot::Zealot(const Vector& position_) : Unit(position_, ZEALOT_SIZE, ZEALOT_MAXHEALTH, ZEALOT_MOVESPEED, ZEALOT_COLOR) {}

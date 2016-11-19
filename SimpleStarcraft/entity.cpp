@@ -1,6 +1,7 @@
 #define _USE_MATH_DEFINES
 
 #include "entity.h"
+#include "constants.h"
 #include <cmath>
 
 Entity::Entity(const Vector& position_, int size_, float maxHealth_, const sf::Color& color_) : EntityBase(position_), size(size_), health(maxHealth_), maxHealth(maxHealth_), shape(sf::CircleShape(size_))
@@ -11,40 +12,38 @@ Entity::Entity(const Vector& position_, int size_, float maxHealth_, const sf::C
 
 void Entity::drawSelection(sf::RenderTarget& target) const
 {
-	const int segments = 36;
-	float selectionSize = size * 1.3f;
+	float selectionSize = size * SELECTION_SIZE_COEFFICIENT;
 
-	sf::Vertex vertices[segments + 1];
-	for (int i = 0; i < segments; ++i)
+	sf::Vertex vertices[SELECTION_SEGMENTS + 1];
+	for (int i = 0; i < SELECTION_SEGMENTS; ++i)
 	{
-		float angle = 2 * M_PI / segments * i;
+		float angle = 2 * M_PI / SELECTION_SEGMENTS * i;
 		vertices[i] = sf::Vertex(sf::Vector2f(position.getX() + selectionSize * cos(angle),
-			                                  position.getY() + selectionSize * sin(angle)), sf::Color::Green);
+			                                  position.getY() + selectionSize * sin(angle)), SELECTION_COLOR);
 	}
 
-	vertices[segments] = vertices[0];
-	target.draw(vertices, segments + 1, sf::LinesStrip);
+	vertices[SELECTION_SEGMENTS] = vertices[0];
+	target.draw(vertices, SELECTION_SEGMENTS + 1, sf::LinesStrip);
 }
 
 void Entity::drawHealthbar(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	const float width = 35;
-	const float height = 6;
-	const float dist = size * 1.3f + 9;
+	const float dist = size * HEALTHBAR_DIST_COEFFICINENT + HEALTHBAR_DIST;
 
-	sf::RectangleShape bg(sf::Vector2f(width, height));
-	bg.setFillColor(sf::Color::Transparent);
-	bg.setOutlineThickness(1);
-	bg.setOrigin(width / 2, height / 2);
+	sf::RectangleShape bg(sf::Vector2f(HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT));
+	bg.setFillColor(HEALTHBAR_BG_COLOR);
+	bg.setOutlineThickness(HEALTHBAR_OUTLINE_THICKNESS);
+	bg.setOrigin(HEALTHBAR_WIDTH * ORIGIN_COEFFICIENT, HEALTHBAR_HEIGHT * ORIGIN_COEFFICIENT);
+	bg.setFillColor(HEALTHBAR_OUTLINE_COLOR);
 	bg.setPosition(position.getX(), position.getY() - dist);
 
-	sf::RectangleShape hb(sf::Vector2f(width * health / maxHealth, height));
-	hb.setFillColor(sf::Color::Green);
-	hb.setOrigin(width / 2, height / 2);
+	sf::RectangleShape hb(sf::Vector2f(HEALTHBAR_WIDTH * health / maxHealth, HEALTHBAR_HEIGHT));
+	hb.setFillColor(HEALTHBAR_COLOR);
+	hb.setOrigin(HEALTHBAR_WIDTH * ORIGIN_COEFFICIENT, HEALTHBAR_HEIGHT * ORIGIN_COEFFICIENT);
 	hb.setPosition(position.getX(), position.getY() - dist);
 
-	target.draw(hb, states);
 	target.draw(bg, states);
+	target.draw(hb, states);
 }
 
 void Entity::draw(sf::RenderTarget& target, sf::RenderStates states) const

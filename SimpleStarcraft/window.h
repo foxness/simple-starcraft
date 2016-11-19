@@ -15,12 +15,6 @@ protected:
 	float counter = 0;
 
 public:
-	static const int WINDOW_WIDTH;
-	static const int WINDOW_HEIGHT;
-	static const char* const WINDOW_TITLE;
-	static const float FPS_CALC_PERIOD;
-	static const float FPS_DISPLAY_PERIOD;
-
 	Window();
 
 	virtual void mainLoop();

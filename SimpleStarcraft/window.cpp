@@ -1,12 +1,7 @@
 #include "window.h"
 #include <iostream>
 #include <map>
-
-const int Window::WINDOW_WIDTH = 800;
-const int Window::WINDOW_HEIGHT = 600;
-const char* const Window::WINDOW_TITLE = "Simple Starcraft";
-const float Window::FPS_CALC_PERIOD = 1;
-const float Window::FPS_DISPLAY_PERIOD = 3;
+#include "constants.h"
 
 Window::Window()
 {

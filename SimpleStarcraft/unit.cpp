@@ -1,6 +1,7 @@
 #define _USE_MATH_DEFINES
 
 #include "unit.h"
+#include "constants.h"
 #include <cmath>
 #include <iostream>
 
@@ -15,23 +16,22 @@ void Unit::startMovingTo(const Vector& location)
 
 void Unit::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	const float beakSize = size * 1.5f - 3;
-	const int vertices = 3;
+	const float beakSize = size * BEAKSIZE_COEFFICIENT + BEAKSIZE;
 	const float unitAngle = moveVector.getAngle();
 
 	const float beakX = position.getX() + size * cos(unitAngle);
 	const float beakY = position.getY() + size * sin(unitAngle);
 
-	sf::Vertex beak[vertices + 1];
-	for (int i = 0; i < vertices; ++i)
+	sf::Vertex beak[BEAK_VERTICES + 1];
+	for (int i = 0; i < BEAK_VERTICES; ++i)
 	{
-		float angle = unitAngle + (i - 1) * 2 * M_PI / 3;
+		float angle = unitAngle + (i - 1) * 2 * M_PI / BEAK_VERTICES;
 	    beak[i] = sf::Vertex(sf::Vector2f(beakX + beakSize * cos(angle),
-			                              beakY + beakSize * sin(angle)), sf::Color::White);
+			                              beakY + beakSize * sin(angle)), BEAK_COLOR);
 	}
-	beak[vertices] = beak[0];
+	beak[BEAK_VERTICES] = beak[0];
 
-	target.draw(beak, vertices + 1, sf::LinesStrip);
+	target.draw(beak, BEAK_VERTICES + 1, sf::LinesStrip);
 
 	Entity::draw(target, states);
 }

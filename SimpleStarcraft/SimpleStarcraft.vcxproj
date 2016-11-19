@@ -172,6 +172,7 @@
     <ClCompile Include="zealot.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="constants.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="entitybase.h" />
     <ClInclude Include="game.h" />
