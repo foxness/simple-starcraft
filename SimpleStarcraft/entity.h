@@ -1,6 +1,7 @@
 #pragma once
 
 #include "entitybase.h"
+#include <string>
 
 class Entity : public EntityBase
 {
@@ -9,8 +10,9 @@ protected:
 	float health;
 	const float maxHealth;
 	mutable sf::CircleShape shape;
+	const std::string& name;
 
-	Entity(const Vector& position_, int size_, float maxHealth_, const sf::Color& color_);
+	Entity(const Vector& position_, int size_, float maxHealth_, const sf::Color& color_, const std::string& name_);
 
 public:
 	virtual void drawSelection(sf::RenderTarget& target) const;
@@ -24,4 +26,8 @@ public:
 	int getSize() const;
 
 	float getHealth() const;
+
+	const std::string& getName() const;
 };
+
+std::ostream& operator<<(std::ostream& a, const Entity& b);

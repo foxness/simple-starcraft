@@ -8,7 +8,7 @@ protected:
 	const int capacity;
 	int amountLeft;
 
-	Resource(const Vector& position_, int size_, int capacity_, const sf::Color& color_);
+	Resource(const Vector& position_, int size_, int capacity_, const sf::Color& color_, const std::string& name_);
 
 public:
 	int getCapacity() const;

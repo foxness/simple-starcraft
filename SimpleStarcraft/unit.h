@@ -10,7 +10,7 @@ protected:
 	float moveSpeed;
 	bool moving = false;
 
-	Unit(const Vector& position_, int size_, float maxHealth_, float moveSpeed_, const sf::Color& color_);
+	Unit(const Vector& position_, int size_, float maxHealth_, float moveSpeed_, const sf::Color& color_, const std::string& name_);
 
 public:
     virtual void update(float dt) override;

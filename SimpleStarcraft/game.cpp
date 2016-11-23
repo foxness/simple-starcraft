@@ -5,7 +5,6 @@
 #include "mineralpatch.h"
 #include "probe.h"
 #include <iostream>
-#include <typeinfo>
 #include <cassert>
 
 Game::Game()
@@ -20,9 +19,9 @@ Game::Game()
 
 void Game::printSelected() const
 {
-	std::cout << "selected: ";
+	std::cout << "SELECTED: ";
 	for (const auto& entity : selectedEntities)
-		std::cout << typeid(*entity).name() << " ";
+		std::cout << *entity << " ";
 	std::cout << std::endl;
 }
 

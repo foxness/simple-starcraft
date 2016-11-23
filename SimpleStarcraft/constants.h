@@ -20,21 +20,25 @@ static const float ORIGIN_COEFFICIENT = 0.5f;
 static const int MINERALPATCH_SIZE = 16;
 static const int MINERALPATCH_CAPACITY = 1000;
 static const sf::Color& MINERALPATCH_COLOR = sf::Color::Cyan;
+static const std::string& MINERALPATCH_NAME = "Mineral Patch";
 
 static const int NEXUS_SIZE = 48;
 static const float NEXUS_MAXHEALTH = 500;
 static const sf::Color& NEXUS_COLOR = sf::Color::Yellow;
+static const std::string& NEXUS_NAME = "Nexus";
 
 static const int PROBE_SIZE = 7;
 static const float PROBE_MAXHEALTH = 10;
 static const sf::Color& PROBE_COLOR = sf::Color(120, 80, 170);
 static const float PROBE_MOVESPEED = 120;
 static const float PROBE_CARRY_SIZE = 4;
+static const std::string& PROBE_NAME = "Probe";
 
 static const int ZEALOT_SIZE = 10;
 static const float ZEALOT_MAXHEALTH = 10;
 static const sf::Color& ZEALOT_COLOR = sf::Color(150, 32, 180);
 static const float ZEALOT_MOVESPEED = 150;
+static const std::string& ZEALOT_NAME = "Zealot";
 
 static const float RESOURCE_HEALTH = -1; // resources have no hp
 

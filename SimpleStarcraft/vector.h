@@ -48,7 +48,7 @@ public:
 
 	operator sf::Vector2f() const;
 
-	friend std::ostream& operator<<(std::ostream& a, const Vector& b);
-
 	const Vector normalized() const;
 };
+
+std::ostream& operator<<(std::ostream& a, const Vector& b);

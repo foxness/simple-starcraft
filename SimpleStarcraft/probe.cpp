@@ -1,7 +1,7 @@
 #include "probe.h"
 #include "constants.h"
 
-Probe::Probe(const Vector& position_) : Unit(position_, PROBE_SIZE, PROBE_MAXHEALTH, PROBE_MOVESPEED, PROBE_COLOR)
+Probe::Probe(const Vector& position_) : Unit(position_, PROBE_SIZE, PROBE_MAXHEALTH, PROBE_MOVESPEED, PROBE_COLOR, PROBE_NAME)
 {
 	res = sf::RectangleShape(sf::Vector2f(PROBE_CARRY_SIZE, PROBE_CARRY_SIZE));
 	res.setOrigin(PROBE_CARRY_SIZE * ORIGIN_COEFFICIENT, PROBE_CARRY_SIZE * ORIGIN_COEFFICIENT);
