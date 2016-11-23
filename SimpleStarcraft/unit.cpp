@@ -36,6 +36,11 @@ void Unit::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	Entity::draw(target, states);
 }
 
+void Unit::interactWith(Entity& entity)
+{
+	std::cout << getId() << " is interacting with " << entity.getId() << std::endl;
+}
+
 void Unit::update(float dt)
 {
 	if (moving)

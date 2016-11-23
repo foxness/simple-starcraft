@@ -32,7 +32,7 @@ float Vector::getAngle() const
 
 float Vector::getLength() const
 {
-	return std::sqrt((*this) * (*this));
+	return std::sqrtf((*this) * (*this));
 }
 
 Vector& Vector::operator+=(const Vector& a)
@@ -68,7 +68,7 @@ const Vector Vector::operator-(const Vector& a) const
 
 float Vector::operator*(const Vector& a) const
 {
-	return std::sqrtf(x * a.x + y * a.y);
+	return x * a.x + y * a.y;
 }
 
 const Vector Vector::operator*(float a) const

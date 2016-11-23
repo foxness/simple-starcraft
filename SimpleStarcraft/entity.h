@@ -19,6 +19,8 @@ public:
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const override;
 
+	bool contains(const Vector& point) const;
+
 	int getSize() const;
 
 	float getHealth() const;

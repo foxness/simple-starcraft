@@ -3,5 +3,6 @@
 int main()
 {
 	Window().mainLoop();
+
 	return 0;
 }

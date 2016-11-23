@@ -61,7 +61,7 @@ void Window::mainLoop()
 		}
 		else if (!prevMouse[sf::Mouse::Right] && mouse[sf::Mouse::Right])
 		{
-			game.moveSelected(Vector(sf::Mouse::getPosition(rw)));
+			game.action(Vector(sf::Mouse::getPosition(rw)));
 		}
 
 		prevMouse = mouse;

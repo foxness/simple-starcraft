@@ -13,4 +13,10 @@ protected:
     
 public:
     const Vector& getPosition() const;
+
+	int getId() const;
+
+private:
+	int id;
+	int getNextId() const;
 };

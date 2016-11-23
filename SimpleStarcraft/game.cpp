@@ -60,14 +60,44 @@ void Game::endSelection()
 	selecting = false;
 }
 
-void Game::moveSelected(const Vector& location)
+void Game::action(const Vector& location)
 {
+	std::shared_ptr<Entity> target;
+	for (const auto& unit : units)
+		if (unit->contains(location))
+		{
+			target = unit;
+			break;
+		}
+	if (!target)
+	{
+		for (const auto& structure : structures)
+			if (structure->contains(location))
+			{
+				target = structure;
+				break;
+			}
+	}
+
+	if (!target)
+	{
+		for (const auto& resource : resources)
+			if (resource->contains(location))
+			{
+				target = resource;
+				break;
+			}
+	}
+
 	for (const auto& selected : selectedEntities)
 	{
 		auto unit = std::dynamic_pointer_cast<Unit>(selected);
 		if (unit)
 		{
-			unit->startMovingTo(location);
+			if (target)
+				unit->interactWith(*target);
+			else
+				unit->startMovingTo(location);
 		}
 	}
 }

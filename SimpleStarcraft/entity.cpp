@@ -52,6 +52,11 @@ void Entity::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(shape, states);
 }
 
+bool Entity::contains(const Vector& point) const
+{
+	return (point - position).getLength() <= size;
+}
+
 int Entity::getSize() const
 {
 	return size;
