@@ -160,6 +160,7 @@
     <ClCompile Include="entitybase.cpp" />
     <ClCompile Include="entitytype.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="entitycontroller.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mineralpatch.cpp" />
     <ClCompile Include="nexus.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="entitytype.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="gameobject.h" />
+    <ClInclude Include="entitycontroller.h" />
     <ClInclude Include="mineralpatch.h" />
     <ClInclude Include="nexus.h" />
     <ClInclude Include="probe.h" />
@@ -186,6 +188,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="structure.h" />
     <ClInclude Include="unit.h" />
+    <ClInclude Include="updatable.h" />
     <ClInclude Include="vector.h" />
     <ClInclude Include="window.h" />
     <ClInclude Include="zealot.h" />

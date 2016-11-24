@@ -7,7 +7,7 @@
 #include <iostream>
 #include <cassert>
 
-Game::Game()
+Game::Game() : ec(units, structures, resources, selectedEntities)
 {
 	structures.push_back(std::make_shared<Nexus>(Vector(400, 500)));
 
@@ -61,44 +61,7 @@ void Game::endSelection()
 
 void Game::action()
 {
-	std::shared_ptr<Entity> target;
-	for (const auto& unit : units)
-		if (unit->contains(mousePosition))
-		{
-			target = unit;
-			break;
-		}
-	if (!target)
-	{
-		for (const auto& structure : structures)
-			if (structure->contains(mousePosition))
-			{
-				target = structure;
-				break;
-			}
-	}
-
-	if (!target)
-	{
-		for (const auto& resource : resources)
-			if (resource->contains(mousePosition))
-			{
-				target = resource;
-				break;
-			}
-	}
-
-	for (const auto& selected : selectedEntities)
-	{
-		auto unit = std::dynamic_pointer_cast<Unit>(selected);
-		if (unit)
-		{
-			if (target && unit != target)
-				unit->interactWith(*target);
-			else
-				unit->startMovingTo(mousePosition);
-		}
-	}
+	ec.action(mousePosition);
 }
 
 bool Game::isSelecting() const
@@ -108,14 +71,7 @@ bool Game::isSelecting() const
 
 void Game::update(float dt)
 {
-	for (auto& unit : units)
-	    unit->update(dt);
-
-	//for (auto& structure : structures)
-	//	structure->update(dt);
-
-	//for (auto& resource : resources)
-	//	resource->update(dt);
+	ec.update(dt);
 }
 
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const

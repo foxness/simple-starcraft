@@ -6,6 +6,7 @@
 #include <memory>
 #include "structure.h"
 #include "resource.h"
+#include "entitycontroller.h"
 
 class Game : public GameObject
 {
@@ -15,6 +16,8 @@ protected:
 	std::vector<std::shared_ptr<Resource>> resources;
 
 	std::vector<std::shared_ptr<Entity>> selectedEntities;
+
+	EntityController ec;
 
 	Vector mousePosition;
 	Vector selectionStart;
