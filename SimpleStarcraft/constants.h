@@ -37,6 +37,7 @@ static const float PROBE_MOVESPEED = 120;
 static const float PROBE_CARRY_SIZE = 4;
 static const std::string& PROBE_NAME = "Probe";
 static const EntityType& PROBE_TYPE = EntityType::Probe;
+static const float HARVEST_TIME = 0.65f;
 
 static const int ZEALOT_SIZE = 10;
 static const float ZEALOT_MAXHEALTH = 10;

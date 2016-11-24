@@ -15,11 +15,9 @@ protected:
 public:
     virtual void update(float dt) override;
 	
-	virtual void startMovingTo(const Vector& location);
+	virtual void move(const Vector& location);
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const override;
-
-	void interactWith(Entity& entity);
 	
 	float getMovespeed() const;
 	

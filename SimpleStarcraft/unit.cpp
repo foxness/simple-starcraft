@@ -6,7 +6,7 @@
 
 Unit::Unit(const Vector& position_, int size_, float maxHealth_, float moveSpeed_, const sf::Color& color_, const EntityType& type_) : Entity(position_, size_, maxHealth_, color_, type_), moveSpeed(moveSpeed_) {}
 
-void Unit::startMovingTo(const Vector& location)
+void Unit::move(const Vector& location)
 {
 	moving = true;
 	destination = location;
@@ -33,12 +33,6 @@ void Unit::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(beak, BEAK_VERTICES + 1, sf::LinesStrip);
 
 	Entity::draw(target, states);
-}
-
-void Unit::interactWith(Entity& entity)
-{
-	std::cout << *this << " is interacting with " << entity << std::endl;
-	//startMovingTo(entity.getPosition());
 }
 
 void Unit::update(float dt)
