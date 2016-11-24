@@ -158,6 +158,7 @@
   <ItemGroup>
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="entitybase.cpp" />
+    <ClCompile Include="entitytype.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mineralpatch.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="constants.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="entitybase.h" />
+    <ClInclude Include="entitytype.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="gameobject.h" />
     <ClInclude Include="mineralpatch.h" />

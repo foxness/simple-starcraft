@@ -4,7 +4,7 @@
 #include "constants.h"
 #include <cmath>
 
-Entity::Entity(const Vector& position_, int size_, float maxHealth_, const sf::Color& color_, const std::string& name_) : EntityBase(position_), size(size_), health(maxHealth_), maxHealth(maxHealth_), shape(sf::CircleShape(size_)), name(name_)
+Entity::Entity(const Vector& position_, int size_, float maxHealth_, const sf::Color& color_, const EntityType& type_) : EntityBase(position_), size(size_), health(maxHealth_), maxHealth(maxHealth_), shape(sf::CircleShape(size_)), type(type_)
 {
 	shape.setFillColor(color_);
 	shape.setOrigin(size, size);
@@ -67,12 +67,12 @@ float Entity::getHealth() const
 	return health;
 }
 
-const std::string& Entity::getName() const
+const EntityType& Entity::getType() const
 {
-	return name;
+	return type;
 }
 
 std::ostream& operator<<(std::ostream& a, const Entity& b)
 {
-	return a << "[ID " << b.getId() << " - " << b.getName() << "]";
+	return a << "[ID " << b.getId() << " - " << getName(b.getType()) << "]";
 }
