@@ -16,6 +16,10 @@ public:
 
 	int getId() const;
 
+	bool operator==(const EntityBase& other) const;
+
+	bool operator!=(const EntityBase& other) const;
+
 private:
 	int id;
 	int getNextId() const;

@@ -93,7 +93,7 @@ void Game::action(const Vector& location)
 		auto unit = std::dynamic_pointer_cast<Unit>(selected);
 		if (unit)
 		{
-			if (target)
+			if (target && unit != target)
 				unit->interactWith(*target);
 			else
 				unit->startMovingTo(location);

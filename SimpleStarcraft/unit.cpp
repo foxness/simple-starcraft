@@ -38,7 +38,8 @@ void Unit::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void Unit::interactWith(Entity& entity)
 {
-	std::cout << getId() << " is interacting with " << entity.getId() << std::endl;
+	std::cout << *this << " is interacting with " << entity << std::endl;
+	//startMovingTo(entity.getPosition());
 }
 
 void Unit::update(float dt)
