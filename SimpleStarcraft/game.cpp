@@ -59,11 +59,11 @@ void Game::endSelection()
 	selecting = false;
 }
 
-void Game::action(const Vector& location)
+void Game::action()
 {
 	std::shared_ptr<Entity> target;
 	for (const auto& unit : units)
-		if (unit->contains(location))
+		if (unit->contains(mousePosition))
 		{
 			target = unit;
 			break;
@@ -71,7 +71,7 @@ void Game::action(const Vector& location)
 	if (!target)
 	{
 		for (const auto& structure : structures)
-			if (structure->contains(location))
+			if (structure->contains(mousePosition))
 			{
 				target = structure;
 				break;
@@ -81,7 +81,7 @@ void Game::action(const Vector& location)
 	if (!target)
 	{
 		for (const auto& resource : resources)
-			if (resource->contains(location))
+			if (resource->contains(mousePosition))
 			{
 				target = resource;
 				break;
@@ -96,7 +96,7 @@ void Game::action(const Vector& location)
 			if (target && unit != target)
 				unit->interactWith(*target);
 			else
-				unit->startMovingTo(location);
+				unit->startMovingTo(mousePosition);
 		}
 	}
 }

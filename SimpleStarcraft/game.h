@@ -31,7 +31,7 @@ public:
 
 	void endSelection();
     
-    void action(const Vector& location);
+    void action();
 
 	bool isSelecting() const;
     
