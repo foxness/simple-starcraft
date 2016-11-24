@@ -87,7 +87,9 @@ void Probe::harvest(const std::shared_ptr<Resource>& resource_, const std::share
 	nexus = nexus_;
 	harvestTimeCounter = 0;
 	harvesting = true;
-	move(resource->getPosition());
+	moving = true;
+	destination = resource->getPosition();
+	moveVector = (destination - position).normalized() * moveSpeed;
 }
 
 void Probe::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -100,4 +102,10 @@ void Probe::draw(sf::RenderTarget& target, sf::RenderStates states) const
 		res.setPosition(position + Vector(size * cos(angle), size * sin(angle)));
 		target.draw(res, states);
 	}
+}
+
+void Probe::move(const Vector& location)
+{
+	harvesting = false;
+	Unit::move(location);
 }

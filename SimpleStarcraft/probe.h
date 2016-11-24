@@ -30,4 +30,6 @@ public:
 	void harvest(const std::shared_ptr<Resource>& resource_, const std::shared_ptr<Nexus>& nexus_);
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const override;
+
+	virtual void move(const Vector& location) override;
 };

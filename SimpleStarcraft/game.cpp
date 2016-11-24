@@ -1,14 +1,24 @@
+#define _USE_MATH_DEFINES
+
 #include "game.h"
 #include <cassert>
+#include <cmath>
 
 Game::Game() : ec(units, structures, resources, selectedEntities)
 {
-	structures.push_back(std::make_shared<Nexus>(Vector(400, 500)));
+	const float nx = 400;
+	const float ny = 250;
+	const float dist = 150;
+
+	structures.push_back(std::make_shared<Nexus>(Vector(nx, ny)));
 
 	units.push_back(std::make_shared<Zealot>(Vector(200, 300)));
-	units.push_back(std::make_shared<Probe>(Vector(200, 350)));
 
-	resources.push_back(std::make_shared<MineralPatch>(Vector(450, 300)));
+	for (int i = 0; i < 6; ++i)
+		units.push_back(std::make_shared<Probe>(Vector(120 + 40 * i, 160)));
+
+	for (float angle = -M_PI / 2; angle < 0; angle += M_PI / 12)
+		resources.push_back(std::make_shared<MineralPatch>(Vector(nx + dist * std::cosf(angle), ny + dist * std::sinf(angle))));
 }
 
 void Game::printSelected() const

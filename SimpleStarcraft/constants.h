@@ -18,7 +18,7 @@ static const float HEALTHBAR_OUTLINE_THICKNESS = 1;
 
 static const float ORIGIN_COEFFICIENT = 0.5f;
 
-static const int MINERALPATCH_SIZE = 16;
+static const int MINERALPATCH_SIZE = 12;
 static const int MINERALPATCH_CAPACITY = 1000;
 static const sf::Color& MINERALPATCH_COLOR = sf::Color::Cyan;
 static const std::string& MINERALPATCH_NAME = "Mineral Patch";

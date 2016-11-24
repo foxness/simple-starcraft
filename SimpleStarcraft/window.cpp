@@ -45,26 +45,29 @@ void Window::mainLoop()
 		while (counter >= FPS_DISPLAY_PERIOD)
 			counter -= FPS_DISPLAY_PERIOD;
 
-		std::map<sf::Mouse::Button, bool> mouse;
-		for (const auto& button : prevMouse)
-			mouse[button.first] = sf::Mouse::isButtonPressed(button.first);
-
-		game.setMousePosition(sf::Mouse::getPosition(rw));
-
-		if (game.isSelecting() && !mouse[sf::Mouse::Left])
+		if (rw.hasFocus())
 		{
-			game.endSelection();
-		}
-		else if (!prevMouse[sf::Mouse::Left] && mouse[sf::Mouse::Left])
-		{
-			game.startSelection();
-		}
-		else if (!prevMouse[sf::Mouse::Right] && mouse[sf::Mouse::Right])
-		{
-			game.action();
-		}
+			std::map<sf::Mouse::Button, bool> mouse;
+			for (const auto& button : prevMouse)
+				mouse[button.first] = sf::Mouse::isButtonPressed(button.first);
 
-		prevMouse = mouse;
+			game.setMousePosition(sf::Mouse::getPosition(rw));
+
+			if (game.isSelecting() && !mouse[sf::Mouse::Left])
+			{
+				game.endSelection();
+			}
+			else if (!prevMouse[sf::Mouse::Left] && mouse[sf::Mouse::Left])
+			{
+				game.startSelection();
+			}
+			else if (!prevMouse[sf::Mouse::Right] && mouse[sf::Mouse::Right])
+			{
+				game.action();
+			}
+
+			prevMouse = mouse;
+		}
 
 		game.update(dt);
 
