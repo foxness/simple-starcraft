@@ -11,5 +11,5 @@ const std::string& getName(const EntityType& type)
 	case EntityType::Zealot: return ZEALOT_NAME;
 	}
 
-	throw "This type has no name";
+	throw;
 }

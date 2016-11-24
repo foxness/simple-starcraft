@@ -1,11 +1,5 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
-#include "gameobject.h"
-#include "unit.h"
-#include <memory>
-#include "structure.h"
-#include "resource.h"
 #include "entitycontroller.h"
 
 class Game : public GameObject

@@ -2,7 +2,6 @@
 
 #include "unit.h"
 #include "constants.h"
-#include <cmath>
 #include <iostream>
 
 Unit::Unit(const Vector& position_, int size_, float maxHealth_, float moveSpeed_, const sf::Color& color_, const EntityType& type_) : Entity(position_, size_, maxHealth_, color_, type_), moveSpeed(moveSpeed_) {}

@@ -1,10 +1,4 @@
 #include "game.h"
-#include "zealot.h"
-#include "rectangle.h"
-#include "nexus.h"
-#include "mineralpatch.h"
-#include "probe.h"
-#include <iostream>
 #include <cassert>
 
 Game::Game() : ec(units, structures, resources, selectedEntities)

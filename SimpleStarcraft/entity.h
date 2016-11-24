@@ -2,7 +2,6 @@
 
 #include "entitybase.h"
 #include "entitytype.h"
-#include <string>
 
 class Entity : public EntityBase
 {

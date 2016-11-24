@@ -4,5 +4,5 @@ Structure::Structure(const Vector& position_, int size_, float maxHealth_, const
 
 void Structure::update(float dt)
 {
-	// todo
+	// structures dont have anything to update yet...
 }
